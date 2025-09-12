@@ -15,17 +15,36 @@ let avaliableQuestions = [];
 let questions = [];
 
 
-//fetch das questões pelo arquivo JSON
-fetch("../assets/data/questions.json")
+//fetch Open Trivia DB
+fetch(
+  "https://opentdb.com/api.php?amount=10&category=15&difficulty=easy&type=multiple"
+)
   .then((res) => {
     return res.json();
   })
   .then((loadedQuestions) => {
-    questions = loadedQuestions;
+    console.log(loadedQuestions.results);
+    questions = loadedQuestions.results.map((loadedQuestions) => {
+      const formattedQuestion = {
+        question: loadedQuestions.question,
+      };
+
+      const answerChoices = [...loadedQuestions.incorrect_answers];
+      formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
+      answerChoices.splice(
+        formattedQuestion.answer - 1,
+        0,
+        loadedQuestions.correct_answer
+      );
+
+      answerChoices.forEach((choice, index) => {
+        formattedQuestion["choice" + (index + 1)] = choice;
+      });
+
+      return formattedQuestion;
+    });
+
     startGame();
-  })
-  .catch((err) => {
-    console.log(err);
   });
 
 
@@ -33,7 +52,7 @@ fetch("../assets/data/questions.json")
 
 //Const
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 4;
+const MAX_QUESTIONS = 10;
 
 //iniciar jogo
 startGame = () => {

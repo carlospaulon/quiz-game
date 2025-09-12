@@ -1,0 +1,34 @@
+[
+  {
+    "question": "How much is 2 + 2?",
+    "choice1": "2",
+    "choice2": "3",
+    "choice3": "6",
+    "choice4": "4",
+    "answer": 4
+  },
+  {
+    "question": "How much is 1 + 1?",
+    "choice1": "2",
+    "choice2": "3",
+    "choice3": "6",
+    "choice4": "4",
+    "answer": 1
+  },
+  {
+    "question": "How much is 3 + 2?",
+    "choice1": "2",
+    "choice2": "3",
+    "choice3": "5",
+    "choice4": "4",
+    "answer": 3
+  },
+  {
+    "question": "How much is 5 * 4?",
+    "choice1": "25",
+    "choice2": "20",
+    "choice3": "30",
+    "choice4": "28",
+    "answer": 2
+  }
+]

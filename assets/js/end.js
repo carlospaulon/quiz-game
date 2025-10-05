@@ -1,3 +1,5 @@
+import { sanitizePlayerName } from "./utils.js";
+
 const username = document.getElementById("username");
 const saveScoreBtn = document.getElementById("saveScoreBtn");
 const finalScore = document.getElementById("finalScore");
@@ -13,18 +15,38 @@ username.addEventListener("keyup", () => {
   saveScoreBtn.disabled = !username.value;
 });
 
-saveHighScore = (e) => {
+username.addEventListener("input", () => {
+  try {
+    sanitizePlayerName(username.value);
+    saveScoreBtn.disabled = false;
+    username.classList.remove("error");
+  } catch(error) {
+    saveScoreBtn.disabled = true;
+    username.classList.add("error");
+    username.title = error.message;
+  }
+});
+
+const saveHighScore = (e) => {
   e.preventDefault();
 
-  const score = {
-    score: mostRecentScore,
-    name: username.value,
-  };
+  try {
+    const sanitizedName = sanitizePlayerName(username.value);
 
-  highScores.push(score);
-  highScores.sort((a, b) => b.score - a.score);
-  highScores.splice(MAX_HIGH_SCORES);
+    const score = {
+      score: mostRecentScore,
+      name: sanitizedName,
+    };
 
-  localStorage.setItem("highScores", JSON.stringify(highScores));
-  window.location.assign("/");
+    highScores.push(score);
+    highScores.sort((a, b) => b.score - a.score);
+    highScores.splice(MAX_HIGH_SCORES);
+
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    window.location.assign("../index.html");
+  } catch (error) {
+    alert(error.message);
+  }
 };
+
+saveScoreBtn.addEventListener('click', saveHighScore)

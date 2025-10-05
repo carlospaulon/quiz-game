@@ -1,84 +1,117 @@
 .choice-container {
-    display: flex;
-    margin-bottom: 0.5rem;
-    width: 100%;
-    font-size: 1.8rem;
-    border: 0.1rem solid #e06565ce;
-    background-color: white;
+  display: flex;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  font-size: 1.8rem;
+  border: 0.1rem solid #e06565ce;
+  background-color: white;
 }
 
 .choice-container:hover {
-    cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 #e06565ce;
-    transform: translateY(-0.1rem);
-    transition: transform 150ms;
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 #e06565ce;
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
 }
 
 .choice-prefix {
-    padding: 1.5rem;
-    background-color: #DD3C3C;
-    color: white;
+  padding: 1.5rem;
+  background-color: #dd3c3c;
+  color: white;
 }
 
 .choice-text {
-    padding: 1.5rem;
-    width: 100%;
+  padding: 1.5rem;
+  width: 100%;
 }
 
 .correct {
-    background-color: #28a745;
+  background-color: #28a745;
 }
 
 .incorrect {
-    background-color: #b12c2cd7;
+  background-color: #b12c2cd7;
 }
 
 /*Hud*/
 
 #hud {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .hud-prefix {
-    text-align: center;
-    font-size: 2rem;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .hud-main-text {
-    text-align: center;
+  text-align: center;
 }
 
 /*Barra de progresso*/
 #progressBar {
-    width: 20rem;
-    height: 4rem;
-    border: 0.3rem solid #e06565ce;
-    margin-top: 1.5rem;
+  width: 20rem;
+  height: 4rem;
+  border: 0.3rem solid #e06565ce;
+  margin-top: 1.5rem;
 }
 
 #progressBarFull {
-    height: 3.4rem;
-    background-color: #e06565ce;
-    width: 50%;
+  height: 3.4rem;
+  background-color: #e06565ce;
+  width: 50%;
 }
 
 /*Spinning Loader*/
 #loader {
-    border: 1.6rem solid white;
-    border-radius: 50%;
-    border-top: 1.6rem solid #e06565ce;
-    width: 12rem;
-    height: 12rem;
-    animation: spin 2s linear infinite;
+  border: 1.6rem solid white;
+  border-radius: 50%;
+  border-top: 1.6rem solid #e06565ce;
+  width: 12rem;
+  height: 12rem;
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  #question {
+    font-size: 3.5rem;
+  }
+
+  #hud {
+    padding: 20px;
+  }
+
+  #hud-prefix {
+    font-size: 1.5rem;
+  }
+
+  #progressBar {
+    width: 18rem;
+    height: 3rem;
+  }
+
+  #progressBarFull {
+    height: 2.4rem;
+  }
+
+  #score {
+    font-size: 4.5rem;
+  }
 }

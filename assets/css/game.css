@@ -73,6 +73,25 @@
   animation: spin 2s linear infinite;
 }
 
+.error-container {
+  text-align: center;
+  padding: 2rem;
+  background: #fff5f5;
+  border-radius: 8px;
+  margin: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.error-container .btn {
+  margin: 0.5rem;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -113,5 +132,14 @@
 
   #score {
     font-size: 4.5rem;
+  }
+
+  .error-container {
+    padding: 1rem;
+    margin: 0.5rem;
+  }
+
+  .error-message {
+    font-size: 1rem;
   }
 }

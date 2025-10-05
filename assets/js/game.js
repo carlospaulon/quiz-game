@@ -14,15 +14,31 @@ let avaliableQuestions = [];
 
 let questions = [];
 
+//Const
+const CORRECT_BONUS = 10;
+const MAX_QUESTIONS = 10;
 
 //fetch Open Trivia DB
 fetch(
   "https://opentdb.com/api.php?amount=10&category=15&difficulty=easy&type=multiple"
 )
   .then((res) => {
+    if (!res.ok) {
+      if (res.status === 429) {
+      throw new Error('Muitas requisições! Aguarde alguns segundos e tente novamente.');
+    }
+      if(res.status === 404) {
+        throw new Error('API não encontrada')
+      }
+      throw new Error(`HTTP ERROR! status: ${res.status}`);
+    } 
+      
     return res.json();
   })
   .then((loadedQuestions) => {
+    if (loadedQuestions.response_code !== 0) {
+      throw new Error("Erro ao Carregar as questões!");
+    }
     console.log(loadedQuestions.results);
     questions = loadedQuestions.results.map((loadedQuestions) => {
       const formattedQuestion = {
@@ -45,17 +61,24 @@ fetch(
     });
 
     startGame();
+  })
+  .catch((error) => {
+    console.error("Erro: ", error);
+    loader.classList.add("hidden");
+
+    game.classList.remove("hidden");
+    game.innerHTML = `
+      <div class="error-container">
+        <h2>Erro ao carregar o quiz</h2>
+        <p>${error.message}</p>
+        <button class="btn" onclick="window.location.reload()">Tentar Novamente</button>
+      </div>
+    `;
   });
 
 
-
-
-//Const
-const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 10;
-
 //iniciar jogo
-startGame = () => {
+const startGame = () => {
   questionCounter = 0;
   score = 0;
   avaliableQuestions = [...questions];
@@ -65,7 +88,7 @@ startGame = () => {
 };
 
 //pegar nova questão
-getNewQuestion = () => {
+const getNewQuestion = () => {
   //verifica quantidade de questões
   if (avaliableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
     localStorage.setItem("mostRecentScore", score);
@@ -118,7 +141,7 @@ choices.forEach((choice) => {
 });
 
 //aumentando a pontuação
-incrementScore = (num) => {
+const incrementScore = (num) => {
   score += num;
   scoreText.innerText = score;
 };

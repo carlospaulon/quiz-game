@@ -65,7 +65,7 @@ xdg-open index.html # Linux
 - Veja seu ranking no Top 5!
 
 ## 📄 Licença
-MIT
+[MIT](LICENSE)
 
 ## 👤 Autor
 Carlos Paulon

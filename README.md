@@ -1,6 +1,6 @@
 # 🎮 Quiz Game
 
-Jogo de perguntas e respostas com pontuação em tempo real, acompanhamento de progresso e pontuações máximas usando a API Open Trivia DB
+Jogo de perguntas e respostas (em inglês) sobre **games**, com pontuação em tempo real, acompanhamento de progresso e exibição de pontuações máximas, utilizando a API Open Trivia DB.
 
 ## 🚀 Demo
 

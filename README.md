@@ -4,7 +4,7 @@ Jogo de perguntas e respostas com pontuação em tempo real, acompanhamento de p
 
 ## 🚀 Demo
 
-[Jogar Agora](seu-github-pages-link)
+[Jogar Agora](https://carlospaulon.github.io/quiz-game/)
 
 ## 🛠️ Tecnologias
 
